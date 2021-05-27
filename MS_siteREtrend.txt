@@ -1,0 +1,112 @@
+
+    model{
+
+      #-- Priors and constraints
+
+      alpha.p1 ~ dlogis(0,1)
+      alpha.p2 ~ dlogis(0,1)
+      beta.phi1 ~ dlogis(0,1)
+      beta.phi2 ~ dlogis(0,1)
+      gamma.psi ~ dlogis(0,1)
+
+      a1.precip ~ dnorm(0,0.1)
+      a1.effort ~ dnorm(0,0.1)
+      a2.male ~ dnorm(0,0.1)
+      a2.precip ~ dnorm(0,0.1)
+      a2.effort ~ dnorm(0,0.1)
+
+      b1.distance ~ dnorm(0,0.1)
+      b1.mnprecip ~ dnorm(0,0.1)
+      b1.drought ~ dnorm(0,0.1)
+      b1.int ~ dnorm(0,0.1)
+      b2.male ~ dnorm(0,0.1)
+      b2.distance ~ dnorm(0,0.1)
+      b2.mnprecip ~ dnorm(0,0.1)
+      b2.drought ~ dnorm(0,0.1)
+      b2.int ~ dnorm(0,0.1)
+      b2.trend ~ dnorm(0,0.1)
+      b2.trend2 ~ dnorm(0,0.1)
+
+      c.mnprecip ~ dnorm(0,0.1)
+
+      omega ~ dunif(0,1)
+
+      sigma.site.2 ~ dt(0,pow(2.5,-2),1)T(0,)
+      tau.site.2 <- 1/(sigma.site.2*sigma.site.2)
+
+      for(p in 1:nplots){
+        e.site.2[p] ~ dnorm(0,tau.site.2)
+      }
+
+      for (i in 1:ntorts){
+        for(t in first[i]:(nyears-1)){
+
+          logit(p1[i,t]) <- alpha.p1 + a1.precip*precip[plot[i],t] + a1.effort*effort[plot[i],t]
+          logit(phi1[i,t]) <- beta.phi1 + b1.distance*distance[plot[i]] +
+                              b1.mnprecip*mean.precip[plot[i]] + b1.drought*drought[plot[i],t] +
+                              b1.int*mean.precip[plot[i]]*drought[plot[i],t]
+
+          logit(psi12[i,t]) <- gamma.psi + c.mnprecip*mean.precip[plot[i]]
+
+          logit(p2[i,t]) <- alpha.p2 + a2.male*male[i] + a2.precip*precip[plot[i],t] + a2.effort*effort[plot[i],t]
+          logit(phi2[i,t]) <- beta.phi2 + b2.male*male[i] + b2.distance*distance[plot[i]] + b2.mnprecip*mean.precip[plot[i]] +
+                              b2.drought*drought[plot[i],t] + b2.int*mean.precip[plot[i]]*drought[plot[i],t] +
+                              b2.trend*yr.trend[t] + b2.trend2*yr.trend2[t] + e.site.2[plot[i]]
+
+          #Define state transition probabilities
+          #First index = states at time t-1, last index = states at time t
+          ps[1,i,t,1] <- phi1[i,t] * (1-psi12[i,t])
+          ps[1,i,t,2] <- phi1[i,t] * psi12[i,t]
+          ps[1,i,t,3] <- 1-phi1[i,t]
+          ps[2,i,t,1] <- 0
+          ps[2,i,t,2] <- phi2[i,t]
+          ps[2,i,t,3] <- 1-phi2[i,t]
+          ps[3,i,t,1] <- 0
+          ps[3,i,t,2] <- 0
+          ps[3,i,t,3] <- 1
+
+          #Define stage-dependent detection probabilities
+          #First index = states at time t, last index = detection type at time t
+          po[1,i,t,1] <- p1[i,t]
+          po[1,i,t,2] <- 0
+          po[1,i,t,3] <- 1-p1[i,t]
+          po[2,i,t,1] <- 0
+          po[2,i,t,2] <- p2[i,t]
+          po[2,i,t,3] <- 1-p2[i,t]
+          po[3,i,t,1] <- 0
+          po[3,i,t,2] <- 0
+          po[3,i,t,3] <- 1
+
+        } #t
+      } #i
+
+      #-- Likelihood
+
+      for(i in 1:ntorts){
+        z[i,first[i]] <- y[i,first[i]]
+        male[i] ~ dbern(omega)
+
+        for (t in (first[i]+1):nyears){
+
+          #State process: draw State[t] given State[t-1]
+          z[i,t] ~ dcat(ps[z[i,t-1],i,t-1,])
+
+          #Observation process: draw Obs[t] given State[t]
+          y[i,t] ~ dcat(po[z[i,t],i,t-1,])
+
+        } #t
+      } #i
+
+      #-- Derived parameters
+
+      logit(psi12.mn) <- gamma.psi
+      logit(phi1.mn) <- beta.phi1
+      logit(p1.mn) <- alpha.p1
+
+      phi2.f <- exp(beta.phi2)/(1 + exp(beta.phi2))
+      phi2.m <- exp(beta.phi2 + b2.male)/(1 + exp(beta.phi2 + b2.male))
+      p2.f <- exp(alpha.p2)/(1 + exp(alpha.p2))
+      p2.m <- exp(alpha.p2 + a2.male)/(1 + exp(alpha.p2 + a2.male))
+
+    } #model
+  
