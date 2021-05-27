@@ -552,7 +552,7 @@ disttocity <- read.csv('PlotDistToCity.csv',header=TRUE,stringsAsFactors=FALSE)
   #Figure with M/F adult survival at plot with mnprecip = mean
   #jpeg('AdultSurvival_DroughtPrecipMean.jpg',width=80,height=70,units='mm',res=600)
   par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
-  plot(mean.f.avg~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.78,1),
+  plot(mean.f.avg~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.75,1),
        bty='n',yaxs='i',col=col1)
   axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
   axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
