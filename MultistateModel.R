@@ -527,45 +527,45 @@ disttocity <- read.csv('PlotDistToCity.csv',header=TRUE,stringsAsFactors=FALSE)
 
   #Figure with M/F adult survival at extreme mnprecip values (wet/dry plots)
   #jpeg('AdultSurvival_DroughtPrecipExtremes.jpg',width=80,height=70,units='mm',res=600)
-  par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
-  plot(mean.f.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.78,1),
-       bty='n',yaxs='i',col=col1)
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(0.8,1,by=0.05),labels=c('0.80','0.85','0.90','0.95','1.00'),
-       tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
-  #polygon(c(plotx,rev(plotx)),c(ci.f.dry[1,],rev(ci.f.dry[2,])),col=col1p,border=NA)
-  lines(mean.f.wet~plotx,type='l',lty=2,col=col1)
-  #polygon(c(plotx,rev(plotx)),c(ci.f.wet[1,],rev(ci.f.wet[2,])),col=col1p,border=NA)  
-  lines(mean.m.dry~plotx,type='l',lty=1,col=col2)
-  #polygon(c(plotx,rev(plotx)),c(ci.m.dry[1,],rev(ci.m.dry[2,])),col=col2p,border=NA)  
-  lines(mean.m.wet~plotx,type='l',lty=2,col=col2)
-  #polygon(c(plotx,rev(plotx)),c(ci.m.wet[1,],rev(ci.m.wet[2,])),col=col2p,border=NA)
-  arrows(x0=0,x1=0,y0=0.68,y1=1,length=0,col='gray50',lty=3)
-  mtext('Adult survival',side=2,las=0,line=2.5,cex=0.8)
-  mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
-  legend('bottomright',c('Arid:F','Arid:M','Semiarid:F','Semiarid:M'),
-         lty=c(1,1,2,2),col=c(col1,col2,col1,col2),bty='n')
+    par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
+    plot(mean.f.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.78,1),
+         bty='n',yaxs='i',col=col1)
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(0.8,1,by=0.05),labels=c('0.80','0.85','0.90','0.95','1.00'),
+         tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
+    #polygon(c(plotx,rev(plotx)),c(ci.f.dry[1,],rev(ci.f.dry[2,])),col=col1p,border=NA)
+    lines(mean.f.wet~plotx,type='l',lty=2,col=col1)
+    #polygon(c(plotx,rev(plotx)),c(ci.f.wet[1,],rev(ci.f.wet[2,])),col=col1p,border=NA)  
+    lines(mean.m.dry~plotx,type='l',lty=1,col=col2)
+    #polygon(c(plotx,rev(plotx)),c(ci.m.dry[1,],rev(ci.m.dry[2,])),col=col2p,border=NA)  
+    lines(mean.m.wet~plotx,type='l',lty=2,col=col2)
+    #polygon(c(plotx,rev(plotx)),c(ci.m.wet[1,],rev(ci.m.wet[2,])),col=col2p,border=NA)
+    arrows(x0=0,x1=0,y0=0.68,y1=1,length=0,col='gray50',lty=3)
+    mtext('Adult survival',side=2,las=0,line=2.5,cex=0.8)
+    mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
+    legend('bottomright',c('Arid:F','Arid:M','Semiarid:F','Semiarid:M'),
+           lty=c(1,1,2,2),col=c(col1,col2,col1,col2),bty='n')
   #dev.off()
   
   #Figure with M/F adult survival at plot with mnprecip = mean
   #jpeg('AdultSurvival_DroughtPrecipMean.jpg',width=80,height=70,units='mm',res=600)
-  par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
-  plot(mean.f.avg~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.75,1),
-       bty='n',yaxs='i',col=col1)
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(0.8,1,by=0.05),labels=c('0.80','0.85','0.90','0.95','1.00'),
-       tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
-  polygon(c(plotx,rev(plotx)),c(ci.f.avg[1,],rev(ci.f.avg[2,])),col=col1p,border=NA)  
-  lines(mean.m.avg~plotx,type='l',lty=1,col=col2)
-  polygon(c(plotx,rev(plotx)),c(ci.m.avg[1,],rev(ci.m.avg[2,])),col=col2p,border=NA)  
-  arrows(x0=0,x1=0,y0=0.68,y1=1,length=0,col='gray50',lty=3)
-  mtext('Adult survival (95% CI)',side=2,las=0,line=2.5,cex=0.8)
-  mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
-  legend('bottomright',c('Female','Male'),lty=1,col=c(col1,col2),bty='n')
+    par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
+    plot(mean.f.avg~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.75,1),
+         bty='n',yaxs='i',col=col1)
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(0.8,1,by=0.05),labels=c('0.80','0.85','0.90','0.95','1.00'),
+         tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
+    polygon(c(plotx,rev(plotx)),c(ci.f.avg[1,],rev(ci.f.avg[2,])),col=col1p,border=NA)  
+    lines(mean.m.avg~plotx,type='l',lty=1,col=col2)
+    polygon(c(plotx,rev(plotx)),c(ci.m.avg[1,],rev(ci.m.avg[2,])),col=col2p,border=NA)  
+    arrows(x0=0,x1=0,y0=0.68,y1=1,length=0,col='gray50',lty=3)
+    mtext('Adult survival (95% CI)',side=2,las=0,line=2.5,cex=0.8)
+    mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
+    legend('bottomright',c('Female','Male'),lty=1,col=c(col1,col2),bty='n')
   #dev.off()  
 
 #Marginal effects of covariates on juvenile survival: mean precipitation and drought
@@ -587,74 +587,74 @@ disttocity <- read.csv('PlotDistToCity.csv',header=TRUE,stringsAsFactors=FALSE)
   
   #Figure with juvenile survival at extreme mnprecip values (wet/dry plots)
   #jpeg('JuvSurvival_DroughtPrecipExtremes.jpg',width=80,height=70,units='mm',res=600)
-  par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
-  plot(mean.j.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.45,1),
-       bty='n',yaxs='i',col='black')
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(0.5,1,by=0.1),labels=c('0.50','0.60','0.70','0.80','0.90','1.00'),
-       tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
-  #polygon(c(plotx,rev(plotx)),c(ci.j.dry[1,],rev(ci.j.dry[2,])),col=rgb(0,0,0,0.2),border=NA)
-  lines(mean.j.wet~plotx,type='l',lty=2,col='black')
-  #polygon(c(plotx,rev(plotx)),c(ci.j.wet[1,],rev(ci.j.wet[2,])),col=rgb(0,0,0,0.2),border=NA)  
-  arrows(x0=0,x1=0,y0=0.45,y1=1,length=0,col='gray50',lty=3)
-  mtext('Juvenile survival',side=2,las=0,line=2.5,cex=0.8)
-  mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
-  legend('bottomright',c('Arid','Semiarid'),lty=c(1,2),col='black',bty='n')
+    par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
+    plot(mean.j.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.45,1),
+         bty='n',yaxs='i',col='black')
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(0.5,1,by=0.1),labels=c('0.50','0.60','0.70','0.80','0.90','1.00'),
+         tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
+    #polygon(c(plotx,rev(plotx)),c(ci.j.dry[1,],rev(ci.j.dry[2,])),col=rgb(0,0,0,0.2),border=NA)
+    lines(mean.j.wet~plotx,type='l',lty=2,col='black')
+    #polygon(c(plotx,rev(plotx)),c(ci.j.wet[1,],rev(ci.j.wet[2,])),col=rgb(0,0,0,0.2),border=NA)  
+    arrows(x0=0,x1=0,y0=0.45,y1=1,length=0,col='gray50',lty=3)
+    mtext('Juvenile survival',side=2,las=0,line=2.5,cex=0.8)
+    mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
+    legend('bottomright',c('Arid','Semiarid'),lty=c(1,2),col='black',bty='n')
   #dev.off() 
   
   #Figure with juvenile survival at plot with mnprecip = mean
   #jpeg('JuvSurvival_DroughtPrecipMean.jpg',width=80,height=70,units='mm',res=600)
-  par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
-  plot(mean.j.avg~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.45,1),
-       bty='n',yaxs='i',col='black')
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(0.5,1,by=0.1),labels=c('0.50','0.60','0.70','0.80','0.90','1.00'),
-       tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
-  polygon(c(plotx,rev(plotx)),c(ci.j.avg[1,],rev(ci.j.avg[2,])),col=rgb(0,0,0,0.2),border=NA)  
-  arrows(x0=0,x1=0,y0=0.45,y1=1,length=0,col='gray50',lty=3)
-  mtext('Juvenile survival (95% CI)',side=2,las=0,line=2.5,cex=0.8)
-  mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
+    par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)
+    plot(mean.j.avg~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.45,1),
+         bty='n',yaxs='i',col='black')
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(0.5,1,by=0.1),labels=c('0.50','0.60','0.70','0.80','0.90','1.00'),
+         tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
+    polygon(c(plotx,rev(plotx)),c(ci.j.avg[1,],rev(ci.j.avg[2,])),col=rgb(0,0,0,0.2),border=NA)  
+    arrows(x0=0,x1=0,y0=0.45,y1=1,length=0,col='gray50',lty=3)
+    mtext('Juvenile survival (95% CI)',side=2,las=0,line=2.5,cex=0.8)
+    mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
   #dev.off()  	
 
   #Stacked figure with juvenile and adult survival, extreme mnprecip values
   #jpeg('Survival_DroughtPrecipExtremes.jpg',width=80,height=135,units='mm',res=600)
-  par(mfrow=c(2,1),mar=c(1.2,3.5,0.5,0.6),oma=c(1.3,0,0,0),cex=0.8)
-  plot(mean.j.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.45,1),
-       bty='n',yaxs='i',col='black')
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(-4,4,by=2),labels=NA,tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(0.5,1,by=0.1),labels=c('0.50','0.60','0.70','0.80','0.90','1.00'),
-       tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
-  #polygon(c(plotx,rev(plotx)),c(ci.j.dry[1,],rev(ci.j.dry[2,])),col=rgb(0,0,0,0.2),border=NA)
-  lines(mean.j.wet~plotx,type='l',lty=2,col='black')
-  #polygon(c(plotx,rev(plotx)),c(ci.j.wet[1,],rev(ci.j.wet[2,])),col=rgb(0,0,0,0.2),border=NA)  
-  arrows(x0=0,x1=0,y0=0.45,y1=1,length=0,col='gray50',lty=3)
-  mtext('Juvenile survival',side=2,las=0,line=2.5,cex=0.8)
-  legend('bottomright',c('Arid','Semiarid'),lty=c(1,2),col='black',bty='n') 
-  plot(mean.f.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.78,1),
-       bty='n',yaxs='i',col=col1)
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(0.8,1,by=0.05),labels=c('0.80','0.85','0.90','0.95','1.00'),
-       tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
-  #polygon(c(plotx,rev(plotx)),c(ci.f.dry[1,],rev(ci.f.dry[2,])),col=col1p,border=NA)
-  lines(mean.f.wet~plotx,type='l',lty=2,col=col1)
-  #polygon(c(plotx,rev(plotx)),c(ci.f.wet[1,],rev(ci.f.wet[2,])),col=col1p,border=NA)  
-  lines(mean.m.dry~plotx,type='l',lty=1,col=col2)
-  #polygon(c(plotx,rev(plotx)),c(ci.m.dry[1,],rev(ci.m.dry[2,])),col=col2p,border=NA)  
-  lines(mean.m.wet~plotx,type='l',lty=2,col=col2)
-  #polygon(c(plotx,rev(plotx)),c(ci.m.wet[1,],rev(ci.m.wet[2,])),col=col2p,border=NA)
-  arrows(x0=0,x1=0,y0=0.68,y1=1,length=0,col='gray50',lty=3)
-  mtext('Adult survival',side=2,las=0,line=2.5,cex=0.8)
-  mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
-  legend('bottomright',c('Arid:F','Arid:M','Semiarid:F','Semiarid:M'),
-         lty=c(1,1,2,2),col=c(col1,col2,col1,col2),bty='n')    
+    par(mfrow=c(2,1),mar=c(1.2,3.5,0.5,0.6),oma=c(1.3,0,0,0),cex=0.8)
+    plot(mean.j.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.45,1),
+         bty='n',yaxs='i',col='black')
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(-4,4,by=2),labels=NA,tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(0.5,1,by=0.1),labels=c('0.50','0.60','0.70','0.80','0.90','1.00'),
+         tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
+    #polygon(c(plotx,rev(plotx)),c(ci.j.dry[1,],rev(ci.j.dry[2,])),col=rgb(0,0,0,0.2),border=NA)
+    lines(mean.j.wet~plotx,type='l',lty=2,col='black')
+    #polygon(c(plotx,rev(plotx)),c(ci.j.wet[1,],rev(ci.j.wet[2,])),col=rgb(0,0,0,0.2),border=NA)  
+    arrows(x0=0,x1=0,y0=0.45,y1=1,length=0,col='gray50',lty=3)
+    mtext('Juvenile survival',side=2,las=0,line=2.5,cex=0.8)
+    legend('bottomright',c('Arid','Semiarid'),lty=c(1,2),col='black',bty='n') 
+    plot(mean.f.dry~plotx,type='l',lty=1,xaxt='n',yaxt='n',xlab='',ylab='', ylim=c(0.78,1),
+         bty='n',yaxs='i',col=col1)
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(0.8,1,by=0.05),labels=c('0.80','0.85','0.90','0.95','1.00'),
+         tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
+    #polygon(c(plotx,rev(plotx)),c(ci.f.dry[1,],rev(ci.f.dry[2,])),col=col1p,border=NA)
+    lines(mean.f.wet~plotx,type='l',lty=2,col=col1)
+    #polygon(c(plotx,rev(plotx)),c(ci.f.wet[1,],rev(ci.f.wet[2,])),col=col1p,border=NA)  
+    lines(mean.m.dry~plotx,type='l',lty=1,col=col2)
+    #polygon(c(plotx,rev(plotx)),c(ci.m.dry[1,],rev(ci.m.dry[2,])),col=col2p,border=NA)  
+    lines(mean.m.wet~plotx,type='l',lty=2,col=col2)
+    #polygon(c(plotx,rev(plotx)),c(ci.m.wet[1,],rev(ci.m.wet[2,])),col=col2p,border=NA)
+    arrows(x0=0,x1=0,y0=0.68,y1=1,length=0,col='gray50',lty=3)
+    mtext('Adult survival',side=2,las=0,line=2.5,cex=0.8)
+    mtext('PDSI (24-month)',side=1,line=1.5,cex=0.8)
+    legend('bottomright',c('Arid:F','Arid:M','Semiarid:F','Semiarid:M'),
+           lty=c(1,1,2,2),col=c(col1,col2,col1,col2),bty='n')    
   #dev.off()  
 
 #Temporal trends in adult survival
@@ -675,33 +675,28 @@ disttocity <- read.csv('PlotDistToCity.csv',header=TRUE,stringsAsFactors=FALSE)
   
   #Figure with survival rates by year and sex
   #jpeg('AdultSurvival_Trend.jpg',width=80,height=70,units='mm',res=600)
-  par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)  
-  plot(female~endyr,predt.both,type='l',lty=1,col=col1,ylim=c(0.73,1),xaxt='n',yaxt='n',
-       bty='n',xlab='',ylab='',yaxs='i')
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(1990,2020,by=5),labels=seq(1990,2020,by=5),tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(0.75,1,by=0.05),labels=c('0.75','0.80','0.85','0.90','0.95','1.00'),
-       tcl=-0.25,las=1,mgp=c(1.5,0.5,0)) 
-  polygon(c(predt.both$endyr,rev(predt.both$endyr)),c(predt.both$female.lcl,rev(predt.both$female.ucl)),
-          border=NA,col=col1p)
-  lines(male~endyr,predt.both,type='l',lty=1,col=col2)
-  polygon(c(predt.both$endyr,rev(predt.both$endyr)),c(predt.both$male.lcl,rev(predt.both$male.ucl)),
-          border=NA,col=col2p) 
-  mtext('Adult survival (95% CI)',side=2,las=0,line=2.5,cex=0.8)
-  mtext('Year',side=1,line=1.5,cex=0.8)
-  legend('bottomright',c('Female','Male'),lty=1,col=c(col1,col2),bty='n') 
+    par(mar=c(2.5,3.5,0.5,0.6),cex=0.8)  
+    plot(female~endyr,predt.both,type='l',lty=1,col=col1,ylim=c(0.73,1),xaxt='n',yaxt='n',
+         bty='n',xlab='',ylab='',yaxs='i')
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(1990,2020,by=5),labels=seq(1990,2020,by=5),tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(0.75,1,by=0.05),labels=c('0.75','0.80','0.85','0.90','0.95','1.00'),
+         tcl=-0.25,las=1,mgp=c(1.5,0.5,0)) 
+    polygon(c(predt.both$endyr,rev(predt.both$endyr)),c(predt.both$female.lcl,rev(predt.both$female.ucl)),
+            border=NA,col=col1p)
+    lines(male~endyr,predt.both,type='l',lty=1,col=col2)
+    polygon(c(predt.both$endyr,rev(predt.both$endyr)),c(predt.both$male.lcl,rev(predt.both$male.ucl)),
+            border=NA,col=col2p) 
+    mtext('Adult survival (95% CI)',side=2,las=0,line=2.5,cex=0.8)
+    mtext('Year',side=1,line=1.5,cex=0.8)
+    legend('bottomright',c('Female','Male'),lty=1,col=c(col1,col2),bty='n') 
   #dev.off()  
 
 #Temporal trend in PDSI values?
   pdsi24t <- unique(pdsi.plot[,c('yr','div','pdsi.24')])
   pdsi24t$yr0 <- pdsi24t$yr - min(pdsi24t$yr) 
-  plot(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==1,],type='b',pch=19,col='steelblue4')
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==3,],type='b',pch=19,col='darkseagreen3')
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==5,],type='b',pch=19,col='goldenrod3')
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==6,],type='b',pch=19,col='salmon3')
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==7,],type='b',pch=19,col='gray50')
-  
+
   #Quick run of ML linear regression models
   summary(lm.trend1 <- lm(pdsi.24~yr0,data=pdsi24t))  
   summary(lm.trend5 <- lm(pdsi.24~yr0*factor(div),data=pdsi24t))
@@ -759,24 +754,24 @@ disttocity <- read.csv('PlotDistToCity.csv',header=TRUE,stringsAsFactors=FALSE)
   
   #Figure with juvenile survival at plot with mnprecip = mean
   #jpeg('PDSI_trend.jpg',width=6.5,height=3,units='in',res=600)
-  par(mar=c(2.5,3.0,0.5,0.6),cex=0.7)
-  plot(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==1,],type='b',pch=19,xaxt='n',yaxt='n',xlab='',
-       ylab='', ylim=c(-4.5,4.8),bty='n',yaxs='i',col=col5.1p)
-  axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
-  axis(1,at=seq(0,32,by=8),labels=seq(1988,2020,by=8),tcl=-0.25,mgp=c(1.5,0.4,0))
-  axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
-  axis(2,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
-  #arrows(x0=par('usr')[1],x1=par('usr')[2],y0=0,y1=0,length=0,col='gray50',lty=2)
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==3,],type='b',pch=19,col=col5.2p)
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==5,],type='b',pch=19,col=col5.3p)
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==6,],type='b',pch=19,col=col5.4p)
-  points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==7,],type='b',pch=19,col=col5.5p)    
-  lines(cent.pdsi~X$yr0)
-  polygon(c(X$yr0,rev(X$yr0)),c(cri.pdsi[1,],rev(cri.pdsi[2,])),col=rgb(0,0,0,0.2),border=NA)
-  mtext('PDSI (24-month)',side=2,las=0,line=2.1,cex=0.7)
-  mtext('Year',side=1,line=1.5,cex=0.7)
-  legend(x=27,y=4.8,c('1','3','5','6','7'),title='Division',pch=19,y.intersp=0.9,adj=c(0,0.5),
-         col=c(col5.1p,col5.2p,col5.3p,col5.4p,col5.5p),bty='n')
+    par(mar=c(2.5,3.0,0.5,0.6),cex=0.7)
+    plot(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==1,],type='b',pch=19,xaxt='n',yaxt='n',xlab='',
+         ylab='', ylim=c(-4.5,4.8),bty='n',yaxs='i',col=col5.1p)
+    axis(1,at=c(par('usr')[1],par('usr')[2]),tck=F,labels=F)
+    axis(1,at=seq(0,32,by=8),labels=seq(1988,2020,by=8),tcl=-0.25,mgp=c(1.5,0.4,0))
+    axis(2,at=c(par('usr')[3],par('usr')[4]),tck=F,labels=F)
+    axis(2,at=seq(-4,4,by=2),labels=seq(-4,4,by=2),tcl=-0.25,las=1,mgp=c(1.5,0.5,0))
+    #arrows(x0=par('usr')[1],x1=par('usr')[2],y0=0,y1=0,length=0,col='gray50',lty=2)
+    points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==3,],type='b',pch=19,col=col5.2p)
+    points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==5,],type='b',pch=19,col=col5.3p)
+    points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==6,],type='b',pch=19,col=col5.4p)
+    points(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==7,],type='b',pch=19,col=col5.5p)    
+    lines(cent.pdsi~X$yr0)
+    polygon(c(X$yr0,rev(X$yr0)),c(cri.pdsi[1,],rev(cri.pdsi[2,])),col=rgb(0,0,0,0.2),border=NA)
+    mtext('PDSI (24-month)',side=2,las=0,line=2.1,cex=0.7)
+    mtext('Year',side=1,line=1.5,cex=0.7)
+    legend(x=27,y=4.8,c('1','3','5','6','7'),title='Division',pch=19,y.intersp=0.9,adj=c(0,0.5),
+           col=c(col5.1p,col5.2p,col5.3p,col5.4p,col5.5p),bty='n')
   #dev.off() 
 
 #-----------------------------------------------------------------------------------------------# 
