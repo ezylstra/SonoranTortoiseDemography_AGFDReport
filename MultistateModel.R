@@ -752,7 +752,7 @@ disttocity <- read.csv('PlotDistToCity.csv',header=TRUE,stringsAsFactors=FALSE)
   col5.4p <- rgb(col5[1,4],col5[2,4],col5[3,4],alpha=trans*255,max=255)
   col5.5p <- rgb(col5[1,5],col5[2,5],col5[3,5],alpha=trans*255,max=255)
   
-  #Figure with juvenile survival at plot with mnprecip = mean
+  #Figure with PDSI trends
   #jpeg('PDSI_trend.jpg',width=6.5,height=3,units='in',res=600)
     par(mar=c(2.5,3.0,0.5,0.6),cex=0.7)
     plot(pdsi.24~yr0,data=pdsi24t[pdsi24t$div==1,],type='b',pch=19,xaxt='n',yaxt='n',xlab='',
@@ -878,8 +878,8 @@ plotests
   
   for(i in 1:nrow(phi2)){ 
     for (j in 1:ncol(phi2)){
-      proj.mat <- matrix(c(phi1[i,j]*(1-psi12[j]), 0.32,
-                           phi1[i,j]*psi12[j], phi2[i,j]),
+      proj.mat <- matrix(c(phi1[i,j]*(1-psi12[i,j]), 0.32,
+                           phi1[i,j]*psi12[i,j], phi2[i,j]),
                          nrow=2,ncol=2,byrow=TRUE)
       lambda[i,j] <- eigen(proj.mat)$values[1]
     }
